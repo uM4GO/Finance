@@ -1,0 +1,18 @@
+<h1>Listagem de contas</h1>
+<table>
+    <th>
+        <tr>
+            <td>Agencia da conta</td>
+            <td>Número da conta</td>
+            <td>Banco</td>
+        </tr>
+    </th>
+    <% @accounts.each do |account| %>
+        <tr>
+            <td><%= account.agency_number %></td>
+            <td><%= account.account_number %></td>
+            <td><%= account.bank.name %></td>
+        </tr>
+    <% end %>
+</table>
+<%= link_to "Nova conta", new_account_path %>

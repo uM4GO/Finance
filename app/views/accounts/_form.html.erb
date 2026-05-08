@@ -1,0 +1,20 @@
+<%= form_with(model: account) do |form| %>
+    <div>
+        <%= form.label :agency_number %>
+        <%= form.text_field :agency_number %>
+    </div>
+
+    <div>
+        <%= form.label :account_number %>
+        <%= form.text_field :account_number %>
+    </div>
+    
+    <div>
+        <%= form.label :bank %>
+        <%= form.select :bank_id, Bank.order(:name).map { |bank| [bank.name, bank.id] } %>
+    </div>
+    
+    <div>
+        <%= form.submit %>
+    </div>
+<% end %>
