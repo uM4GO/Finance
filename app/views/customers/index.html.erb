@@ -1,8 +1,21 @@
 <h1>Listagem de Clientes</h1>
 <table>
-<%= @customers.each do |customer| %>
     <tr>
-        <td>customer.name</td>
+        <th>Nome do cliente</th>
+        <th>Endereço</th>
+        <th>Data de nascimento</th>
+        <th>CPF</th>
+        <th>Tipo</th>
+        <th>CEP</th>
+    </tr>
+<% @customers.each do |customer| %>
+    <tr>
+        <td><%= customer.name %></td>
+        <td><%= customer.address %></td>
+        <td><%= customer.birth_date %></td>
+        <td><%= customer.cpf %></td>
+        <td><%= customer.kind %></td>
+        <td><%= customer.cep %></td>
     </tr>
 <% end %>
 </table>
