@@ -23,5 +23,10 @@ module Finance
     #
     # config.time_zone = "Central Time (US & Canada)"
     # config.eager_load_paths << Rails.root.join("extras")
+    
+    # Set application timezone for UI rendering (DB remains UTC)
+    config.time_zone = "America/Sao_Paulo"
+    # config.eager_load_paths << Rails.root.join("extras")
+    config.i18n.default_locale = :"pt-BR"
   end
 end

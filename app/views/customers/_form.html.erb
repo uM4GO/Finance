@@ -1,1 +1,61 @@
-a
+<%= form_with(model: customer) do |form| %>
+    <% if customer.errors.any? %>
+        <div style="color: red">
+            <h2><%= pluralize(customer.errors.count, "error") %> prohibited this customer from being saved:</h2>
+
+            <ul>
+                <% customer.errors.each do |error| %>
+                    <li><%= error.full_message %></li>
+                <% end %>
+            </ul>
+        </div>
+    <% end %>
+    
+
+    <div>
+        <%= form.label :name %>
+        <%= form.text_field :name %>
+    </div>
+    </br>
+
+    <div>
+        <%= form.label :address %>
+        <%= form.text_field :address %>
+    </div>
+    </br>
+
+    <div>
+        <%= form.label :birth_date %>
+        <%= form.date_field :birth_date %>
+    </div>
+    </br>
+
+    <div>
+        <%= form.label :documento, "Documento: " %>
+        <%= form.text_field :documento  %>
+    </div>
+    </br>
+
+    <div>
+        <%= form.label :kind, "Tipo de pessoa: " %>
+        <%= form.select :kind, Customer.kinds.keys %>
+    </div>
+    </br>
+
+    <div>
+        <%= form.label :cep, "CEP: " %>
+        <%= form.text_field :cep  %>
+    </div>
+    </br>
+
+    <div>
+        <%= form.label :active, "Cliente ativo: " %>
+        <%= form.check_box :active %>
+    </div>
+    </br>
+
+    <div>
+        <%= form.submit%>
+    </div>
+
+<% end %>

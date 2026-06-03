@@ -1,13 +1,11 @@
 <h1>Listagem de contas</h1>
 <table>
-    <th>
-        <tr>
-            <td>Agencia da conta</td>
-            <td>Número da conta</td>
-            <td>Banco</td>
-            <td>Ações</td>
-        </tr>
-    </th>
+    <tr>
+        <th>Agencia da conta</th>
+        <th>Número da conta</th>
+        <th>Banco</th>
+        <th>Ações</th>
+    </tr>
     <% @accounts.each do |account| %>
         <tr>
             <td><%= account.agency_number %></td>

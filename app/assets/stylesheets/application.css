@@ -9,5 +9,9 @@
  * Consider organizing styles into separate files for maintainability.
  */
 .table, th, td {
-    border: 1px solid black;
+    border: 2px solid black;
+}
+
+.h2 {
+    background-color: grey;
 }
