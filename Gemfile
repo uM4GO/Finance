@@ -52,6 +52,14 @@ group :development, :test do
 
   # Omakase Ruby styling [https://github.com/rails/rubocop-rails-omakase/]
   gem "rubocop-rails-omakase", require: false
+
+  #print
+  gem "table_print"
+  gem "awesome_print"
+
+  #testes
+  gem "faker"
+  gem "rspec-rails"
 end
 
 group :development do
@@ -64,3 +72,9 @@ group :test do
   gem "capybara"
   gem "selenium-webdriver"
 end
+
+#Usado para configuração do bootstrap front end
+gem "dartsass-rails"
+gem "bootstrap", "~> 5.3.3"
+
+
