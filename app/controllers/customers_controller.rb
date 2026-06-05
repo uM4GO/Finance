@@ -26,6 +26,11 @@ class CustomersController < ApplicationController
   end
 
   def destroy
+    @customer.destroy!
+
+    respond_to do |format|
+      format.html { redirect_to customers_path, notice: "Cliente foi removido.", status: :see_other }
+    end
   end
 
   def update
