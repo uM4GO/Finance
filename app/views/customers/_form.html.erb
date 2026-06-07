@@ -12,9 +12,9 @@
     <% end %>
     
 
-    <div>
-        <%= form.label :name %>
-        <%= form.text_field :name %>
+    <div class="d-flex p-2 align-items-start col-md-6">
+        <%= form.label :name, class: "form-label" %>
+        <%= form.text_field :name, class: "form-control form-control-sm" %>
     </div>
     </br>
 
@@ -38,7 +38,11 @@
 
     <div>
         <%= form.label :kind, "Tipo de pessoa: " %>
-        <%= form.select :kind, Customer.kinds.keys %>
+        <%#= form.select :kind, Customer.kinds.keys %>
+        <%= form.select :operation_type,
+              options_for_select(customer_kind_options, Customer.kinds.keys),
+              {},
+              { class: "form-select", required: true } %>
     </div>
     </br>
 

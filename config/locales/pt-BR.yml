@@ -12,8 +12,8 @@ pt-BR:
         birth_date: Data de nascimento
         enums:
           kind:
-            person: Pessoa Física
-            company: Pessoa Jurídica
+            person: Física
+            company: Jurídica
     errors:
       models: 
         customer:
