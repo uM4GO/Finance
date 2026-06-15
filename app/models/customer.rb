@@ -1,20 +1,14 @@
 class Customer < ApplicationRecord
   validates :name, presence: true, length: { minimum: 2 }
   validates :address, presence: true
-  validate :valid_cpf?
+  validates :documento, presence: true
+
   validate :validar_documento
 
   enum :kind, { person: "F", company: "J" }
 
   def status
     active ? "Ativo" : "Inativo"
-  end
-
-  def valid_cpf?
-    return true if company?
-    return true if documento.present?
-    
-    false
   end
 
   private

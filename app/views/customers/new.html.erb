@@ -1,11 +1,9 @@
 <%  content_for :title, "Novo Cliente" %>
-
-<h1>Criar um novo cliente</h1>
-
+<div class="p-4">
+  <h1>Criar um novo cliente</h1>
+</div>
 <%= render "form", customer: @customer %>
 
-<br>
-
-<div>
-  <%= link_to "Voltar para Clientes", customers_path %>
+<div class="ps-4 pt-2">
+  <%= link_to "Voltar para Clientes", customers_path, class: "btn btn-primary" %>
 </div>

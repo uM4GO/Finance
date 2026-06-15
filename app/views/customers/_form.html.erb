@@ -12,54 +12,60 @@
     <% end %>
     
 
-    <div class="d-flex p-2 align-items-start col-md-6">
+    <div class="d-flex p-2 ps-4 align-items-start col-md-3">
         <%= form.label :name, class: "form-label" %>
-        <%= form.text_field :name, class: "form-control form-control-sm" %>
+        <div class="ps-3">
+            <%= form.text_field :name, class: "form-control form-control-sm" %>
+        </div>
     </div>
-    </br>
 
-    <div>
-        <%= form.label :address %>
-        <%= form.text_field :address %>
+    <div class="d-flex p-2 ps-4 align-items-center col-md-3">
+        <%= form.label :address, class: "form-label" %>
+        <div class="ps-3">
+            <%= form.text_field :address, class: "form-control form-control-sm" %>
+        </div>
     </div>
-    </br>
 
-    <div>
-        <%= form.label :birth_date %>
-        <%= form.date_field :birth_date %>
+    <div class="d-flex p-2 ps-4 align-items-center col-md-3">
+        <%= form.label :birth_date, class: "form-label" %>
+        <div class="ps-3">
+            <%= form.date_field :birth_date, class: "form-control form-control-sm" %>
+        </div>
     </div>
-    </br>
 
-    <div>
-        <%= form.label :documento, "Documento: " %>
-        <%= form.text_field :documento  %>
+    <div class="d-flex p-2 ps-4 ps-4 align-items-center col-md-2">
+        <%= form.label :documento, "Documento: ", class: "form-label" %>
+        <div class="ps-3">
+            <%= form.text_field :documento, class: "form-control form-control-sm" %>
+        </div>
     </div>
-    </br>
 
-    <div>
-        <%= form.label :kind, "Tipo de pessoa: " %>
-        <%#= form.select :kind, Customer.kinds.keys %>
-        <%= form.select :operation_type,
-              options_for_select(customer_kind_options, Customer.kinds.keys),
-              {},
-              { class: "form-select", required: true } %>
+    <div class="d-flex p-2 ps-4 align-items-center col-md-2">
+        <%= form.label :kind, "Tipo de pessoa: ", class: "form-label text-nowrap" %>
+        <div class="ps-3">
+            <%= form.select :kind,
+                options_for_select(customer_kind_options, Customer.kinds.keys),
+                {},
+                { class: "form-select", required: true } %>
+        </div>
     </div>
-    </br>
 
-    <div>
-        <%= form.label :cep, "CEP: " %>
-        <%= form.text_field :cep  %>
+    <div class="d-flex p-2 ps-4 align-items-center col-md-2">
+        <%= form.label :cep, "CEP: ", class: "form-label" %>
+        <div class="ps-3">
+            <%= form.text_field :cep, class: "form-control form-control-sm" %>
+        </div>
     </div>
-    </br>
 
-    <div>
-        <%= form.label :active, "Cliente ativo: " %>
-        <%= form.check_box :active %>
+    <div class="p-2 ps-4">
+        <div class="form-check">
+            <%= form.check_box :active, class: "form-check-input" %>
+            <%= form.label :active, "Cliente ativo:", class: "form-check-label" %>
+        </div>
     </div>
-    </br>
 
-    <div>
-        <%= form.submit%>
+    <div class="ps-4">
+        <%= form.submit class: "btn btn-info" %>
     </div>
 
 <% end %>

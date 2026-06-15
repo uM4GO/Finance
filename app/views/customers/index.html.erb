@@ -1,33 +1,41 @@
-<h1>Listagem de Clientes</h1>
-<table class="table table-striped">
-    <tr>
-        <th>Nome do cliente</th>
-        <th>Endereço</th>
-        <th>Data de nascimento</th>
-        <th>CPF</th>
-        <th>Tipo</th>
-        <th>CEP</th>
-        <th>Status</th>
-        <th>Ações</th>
-    </tr>
-<% @customers.each do |customer| %>
-    <tr>
-        <td><%= customer.name %></td>
-        <td><%= customer.address %></td>
-        <td><%= customer.birth_date %></td>
-        <td><%= customer.documento %></td>
-        <td><%= customer.kind %></td>
-        <td><%= customer.cep %></td>
-        <td><%= customer.status %></td>
-        <td>
-            <%= link_to "Editar", edit_customer_path(customer) %>
-            <%= link_to customer_path(customer),
-                data: { turbo_method: :delete, turbo_confirm: "Tem certeza?" },
-                class: "btn btn-sm btn-danger" do %>
-                    <b class="bi bi-trash">Excluir</b>
-                <% end %>
-        </td>
-    </tr>
-<% end %>
-</table>
-<%= link_to "Novo cliente", new_customer_path %>
+<div class="p-3">
+    <h1>Listagem de Clientes</h1>
+</div>
+
+<div class="px-3">
+    <table class="table table-striped">
+        <thead class="table-info">
+            <th>Nome do cliente</th>
+            <th>Endereço</th>
+            <th>Data de nascimento</th>
+            <th>CPF</th>
+            <th>Tipo</th>
+            <th>CEP</th>
+            <th>Status</th>
+            <th>Ações</th>
+        </thead>
+    <% @customers.each do |customer| %>
+        <tr>
+            <td><%= customer.name %></td>
+            <td><%= customer.address %></td>
+            <td><%= customer.birth_date.present? ? customer.birth_date.strftime("%d/%m/%Y") : "Não informado" %></td>
+            <td><%= customer.documento %></td>
+            <td><%= t("activerecord.attributes.customer.enums.kind.#{customer.kind}") %></td>
+            <td><%= customer.cep %></td>
+            <td><%= customer.status %></td>
+            <td>
+                <%= link_to "Editar", edit_customer_path(customer), class: "btn btn-primary btn-sm" %>
+                <%= link_to customer_path(customer),
+                    data: { turbo_method: :delete, turbo_confirm: "Tem certeza?" },
+                    class: "btn btn-sm btn-danger" do %>
+                        <b class="bi bi-trash">Excluir</b>
+                    <% end %>
+            </td>
+        </tr>
+    <% end %>
+    </table>
+</div>
+
+<div class="ps-3">
+    <%= link_to "Novo cliente", new_customer_path, class: "btn btn-primary" %>
+</div>
