@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
   resources :banks
-  resources :accounts
+  resources :accounts do
+    resources :transactions
+  end
   resources :customers
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 

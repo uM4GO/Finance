@@ -77,4 +77,4 @@ end
 gem "dartsass-rails"
 gem "bootstrap", "~> 5.3.3"
 
-
+gem "cpf_cnpj"

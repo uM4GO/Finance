@@ -1,21 +1,32 @@
-<h1>Listagem de contas</h1>
-<table>
-    <tr>
-        <th>Agencia da conta</th>
-        <th>Número da conta</th>
-        <th>Banco</th>
-        <th>Ações</th>
-    </tr>
-    <% @accounts.each do |account| %>
+<div class="p-3">
+    <h1>Listagem de contas</h1>
+</div>
+<div class="px-3">
+    <table class="table table-striped">
+        <thead class="table-info">
+            <th>Agencia da conta</th>
+            <th>Número da conta</th>
+            <th>Banco</th>
+            <th>Saldo</th>
+            <th>Ações</th>
+        </thead>
+        <% @accounts.each do |account| %>
         <tr>
             <td><%= account.agency_number %></td>
             <td><%= account.account_number %></td>
             <td><%= account.bank.name %></td>
-            <td><%= link_to "Editar", edit_account_path(account) %>
-            <%= button_to "Excluir", account, method: :delete %>
+            <td><%= account.total_saldo %></td>
+            <td>
+                <%= link_to "Editar", edit_account_path(account), class: "btn btn-primary btn-sm" %>
+                <%= link_to customer_path(customer),
+                    data: { turbo_method: :delete, turbo_confirm: "Tem certeza?" },
+                    class: "btn btn-sm btn-danger" do %>
+                        <b class="bi bi-trash">Excluir</b>
+                <%= link_to "Transações", account_transactions_path(account) if account.transactions.any? %>
             </td>
         </tr>
-    <% end %>
-</table>
+        <% end %>
+    </table>
+</div>
 <%= link_to "Nova conta", new_account_path %>
 

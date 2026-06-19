@@ -1,9 +1,8 @@
 class Customer < ApplicationRecord
   validates :name, presence: true, length: { minimum: 2 }
   validates :address, presence: true
-  validates :documento, presence: true
 
-  validate :validar_documento
+  validates :documento, presence: true
 
   enum :kind, { person: "F", company: "J" }
 
