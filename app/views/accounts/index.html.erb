@@ -18,15 +18,18 @@
             <td><%= account.total_saldo %></td>
             <td>
                 <%= link_to "Editar", edit_account_path(account), class: "btn btn-primary btn-sm" %>
-                <%= link_to customer_path(customer),
-                    data: { turbo_method: :delete, turbo_confirm: "Tem certeza?" },
-                    class: "btn btn-sm btn-danger" do %>
-                        <b class="bi bi-trash">Excluir</b>
-                <%= link_to "Transações", account_transactions_path(account) if account.transactions.any? %>
+                <% if account.transactions.none?  %>
+                    <%= link_to account_path(account),
+                        data: { turbo_method: :delete, turbo_confirm: "Tem certeza?" },
+                        class: "btn btn-sm btn-danger" do %>
+                            <b class="bi bi-trash">Excluir</b>
+                    <% end %>
+                <% else %>
+                    <%= link_to "Transações", account_transactions_path(account) %>
+                <% end %> 
             </td>
         </tr>
         <% end %>
     </table>
 </div>
 <%= link_to "Nova conta", new_account_path %>
-
