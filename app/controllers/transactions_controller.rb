@@ -5,6 +5,18 @@ class TransactionsController < ApplicationController
     @transactions = @account.transactions
   end
 
+  def edit
+    
+  end
+
+  def destroy
+    
+  end
+
+  def new
+    
+  end
+
   private
 
   def set_account

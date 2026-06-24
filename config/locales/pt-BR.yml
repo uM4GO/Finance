@@ -14,6 +14,15 @@ pt-BR:
           kind:
             person: Física
             company: Jurídica
+      transaction:
+        date: Data e Hora
+        transaction_type: Tipo
+        amount: Valor
+        enums:
+          transaction_type:
+            debit: Débito
+            credit: Crédito
+            info: Informação
     errors:
       models: 
         customer:

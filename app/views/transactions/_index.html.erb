@@ -1,0 +1,40 @@
+<div class="p-3">
+    <h1>Listagem de Transações da conta <%= @account.account_number %> </h1>
+</div>
+<div class="px-3">
+    <table class="table table-striped">
+        <thead class="table-info">
+            <th><%= t("activerecord.attributes.transaction.date") %></th>
+            <th>Tipo</th>
+            <th>Descrição</th>
+            <th>Valor</th>
+            <th>Ações</th>
+        </thead>
+        <% @transactions.each do |transaction| %>
+        <tr>
+            <td><%= transaction.date %></td>
+            <td><%= t("activerecord.attributes.transaction.enums.transaction_type.#{transaction.transaction_type}") %></td>
+            <td><%= transaction.description %></td>
+            <td><%= transaction.amount %></td>
+            <td>
+                <%= link_to "Editar", edit_account_transaction_path(@account, transaction), class: "btn btn-primary btn-sm" %>
+                <%= link_to account_transaction_path(@account, transaction),
+                    data: { turbo_method: :delete, turbo_confirm: "Tem certeza?" },
+                    class: "btn btn-sm btn-danger" do %>
+                        <b class="bi bi-trash">Excluir</b>
+                <% end %> 
+            </td>
+        </tr>
+        <% end %>
+        <tfooter>
+            <td></td>
+            <td></td>
+            <th>Saldo</th>
+            <td><%= @account.total_saldo %></td>
+            <td></td>
+        </tfooter>
+    </table>
+</div>
+<div class="ps-3">
+    <%= link_to "Nova transação", new_account_transaction_path(@account), class: "btn btn-primary" %>
+</div>

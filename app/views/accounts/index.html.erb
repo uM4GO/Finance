@@ -25,11 +25,13 @@
                             <b class="bi bi-trash">Excluir</b>
                     <% end %>
                 <% else %>
-                    <%= link_to "Transações", account_transactions_path(account) %>
+                    <%= link_to "Transações", account_transactions_path(account), class: "btn btn-success btn-sm" %>
                 <% end %> 
             </td>
         </tr>
         <% end %>
     </table>
 </div>
-<%= link_to "Nova conta", new_account_path %>
+<div class="ps-3">
+    <%= link_to "Nova conta", new_account_path, class: "btn btn-primary" %>
+</div>
