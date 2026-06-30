@@ -3,7 +3,6 @@ class Api::V1::TransactionsController < Api::ApplicationController
 
   def index
     @transactions = @account.transactions.order(:id)
-    render json: @transactions
   end
 
   def edit
