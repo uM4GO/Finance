@@ -14,7 +14,20 @@ class TransactionsController < ApplicationController
   end
 
   def new
-    
+    #@account = Account.find(params[:account_id])
+    @transaction = @account.transactions.new
+  end
+
+  def create
+    @transaction = @account.transactions.new(transactions_params)
+
+    respond_to do |format|
+      if @transaction.save
+        format.html { redirect_to account_transactions_path, notice: "Transação criada com sucesso!", status: :see_other}
+      else 
+        format.html { render :new, status: :unprocessable_entity }
+      end
+    end
   end
 
   private
@@ -22,6 +35,8 @@ class TransactionsController < ApplicationController
   def set_account
     @account = Account.find params[:account_id]
   end
-end
 
-#formulario para transactions
+  def transactions_params
+    params.expect(transaction: [ :amount, :description, :transaction_type, :date ])
+  end
+end

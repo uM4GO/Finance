@@ -18,6 +18,7 @@ pt-BR:
         date: Data e Hora
         transaction_type: Tipo
         amount: Valor
+        description: Descrição
         enums:
           transaction_type:
             debit: Débito

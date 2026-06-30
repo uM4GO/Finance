@@ -1,0 +1,11 @@
+<% content_for :title, "Editar transação" %>
+
+<h1>Editar transação</h1>
+
+<%= render "form", transaction: @transaction %>
+
+<br>
+
+<div>
+  <%= link_to "Voltar para transação", transactions_path %>
+</div>

@@ -1,0 +1,67 @@
+.bank-statement {
+  width: 100%;
+  max-width: 900px;
+  margin: 20px auto;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.bank-statement h2 {
+  margin-bottom: 10px;
+  font-size: 20px;
+}
+
+.bank-statement .header-info {
+  margin-bottom: 15px;
+  font-size: 12px;
+  color: #666;
+}
+
+.bank-statement table {
+  width: 100%;
+  border-collapse: collapse;
+  background: #fff;
+  border: 1px solid #ddd;
+}
+
+.bank-statement thead {
+  background-color: #1e5eff;
+  color: white;
+}
+
+.bank-statement th,
+.bank-statement td {
+  padding: 10px;
+  border: 1px solid #ddd;
+  font-size: 14px;
+}
+
+.bank-statement th {
+  text-align: left;
+}
+
+.bank-statement td {
+  vertical-align: middle;
+}
+
+.bank-statement td.amount {
+  text-align: right;
+}
+
+.credit {
+  color: #1a9c4a;
+  font-weight: bold;
+}
+
+.debit {
+  color: #d93025;
+  font-weight: bold;
+}
+
+.bank-statement tfoot {
+  font-weight: bold;
+  background: #f5f5f5;
+}
+
+.bank-statement tfoot td {
+  text-align: right;
+}
