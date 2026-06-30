@@ -36,3 +36,5 @@
 
 /app/assets/builds/*
 !/app/assets/builds/.keep
+
+/finance-frontend/node_modules/*
