@@ -1,5 +1,5 @@
 class AccountsController < ApplicationController
-  before_action :set_account, only: %i[ edit update destroy ]
+  before_action :set_account, only: %i[ edit update destroy register_daily_balance ]
 
   def index
     @accounts = Account.all
@@ -46,10 +46,18 @@ class AccountsController < ApplicationController
     end
   end
 
+  def register_daily_balance
+    service = RegisterDailyBalanceService.new(@account, Date.today)
+    service.call
+    respond_to do |format|
+      format.html { redirect_to accounts_path, notice: "Ação executada.", status: :see_other }
+    end
+  end
+
   private
 
   def set_account
-    @account = Account.find(params[:id])
+    @account = Account.find(params[:id] || params[:account_id])
   end
   
   def accounts_params

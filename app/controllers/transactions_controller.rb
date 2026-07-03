@@ -1,5 +1,6 @@
 class TransactionsController < ApplicationController
   before_action :set_account
+  before_action :set_transaction, only: %i[edit destroy update]
 
   def index
     @transactions = @account.transactions
@@ -9,8 +10,22 @@ class TransactionsController < ApplicationController
     
   end
 
+  def update
+    respond_to do |format|
+      if @transaction.update(transactions_params)
+        format.html { redirect_to account_transactions_path, notice: "A transação foi atualizada.", status: :see_other }
+      else
+        format.html { render :edit, status: :unprocessable_entity }
+      end
+    end
+  end
+
   def destroy
-    
+    @transaction.destroy!
+
+    respond_to do |format|
+      format.html { redirect_to account_transactions_path, notice: "Transação foi removida.", status: :see_other }
+    end
   end
 
   def new
@@ -34,6 +49,10 @@ class TransactionsController < ApplicationController
 
   def set_account
     @account = Account.find params[:account_id]
+  end
+
+  def set_transaction
+    @transaction = @account.transactions.find params[:id]
   end
 
   def transactions_params
