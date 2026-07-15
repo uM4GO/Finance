@@ -5,6 +5,7 @@
     <table class="table table-striped">
         <thead class="table-info">
             <th><%= t("activerecord.attributes.transaction.date") %></th>
+            <th>Atualizado em</th>
             <th>Tipo</th>
             <th>Descrição</th>
             <th>Valor</th>
@@ -13,6 +14,7 @@
         <% @transactions.each do |transaction| %>
         <tr>
             <td><%= transaction.date %></td>
+            <td><%= transaction.updated_at %></td>
             <td><%= t("activerecord.attributes.transaction.enums.transaction_type.#{transaction.transaction_type}") %></td>
             <td><%= transaction.description %></td>
             <td><%= transaction.amount %></td>

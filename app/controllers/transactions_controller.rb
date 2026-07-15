@@ -3,7 +3,7 @@ class TransactionsController < ApplicationController
   before_action :set_transaction, only: %i[edit destroy update]
 
   def index
-    @transactions = @account.transactions
+    @transactions = @account.transactions.order(:date)
   end
 
   def edit
@@ -13,6 +13,7 @@ class TransactionsController < ApplicationController
   def update
     respond_to do |format|
       if @transaction.update(transactions_params)
+      UpdateDailyBalancesService.new(@transaction.account, @transaction.date).call
         format.html { redirect_to account_transactions_path, notice: "A transação foi atualizada.", status: :see_other }
       else
         format.html { render :edit, status: :unprocessable_entity }
@@ -22,7 +23,7 @@ class TransactionsController < ApplicationController
 
   def destroy
     @transaction.destroy!
-
+    UpdateDailyBalancesService.new(@transaction.account, @transaction.date).call
     respond_to do |format|
       format.html { redirect_to account_transactions_path, notice: "Transação foi removida.", status: :see_other }
     end
@@ -38,6 +39,8 @@ class TransactionsController < ApplicationController
 
     respond_to do |format|
       if @transaction.save
+        RegisterDailyBalanceService.new(@transaction.account, @transaction.date).call
+        UpdateDailyBalancesService.new(@transaction.account, @transaction.date).call
         format.html { redirect_to account_transactions_path, notice: "Transação criada com sucesso!", status: :see_other}
       else 
         format.html { render :new, status: :unprocessable_entity }

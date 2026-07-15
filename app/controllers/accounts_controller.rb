@@ -15,7 +15,7 @@ class AccountsController < ApplicationController
 
   def create
     @account = Account.new(accounts_params)
-
+    
     respond_to do |format|
       if @account.save
         format.html { redirect_to accounts_path, notice: "Conta criada com sucesso!", status: :see_other}
@@ -54,6 +54,14 @@ class AccountsController < ApplicationController
     end
   end
 
+  def update_daily_balances
+    UpdateDailyBalancesService.new(@account).call
+
+    respond_to do |format|
+    format.html { redirect_to accounts_path, notice: "Saldos diários atualizados.", status: :see_other }
+    end
+  end
+
   private
 
   def set_account
@@ -64,3 +72,4 @@ class AccountsController < ApplicationController
     params.expect(account: [ :agency_number, :account_number, :bank_id ])
   end
 end
+

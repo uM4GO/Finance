@@ -6,7 +6,7 @@ class RegisterDailyBalanceService
 	
 	def call
 		#se ja existir uma linha com a descrição de "Saldo do dia #{@date.strftime('%d/%m/%Y')}" atualizar, senão criar
-		transaction = @account.transactions.find_by(transaction_type: "I", date: @date.beginning_of_day, description: "Saldo do dia #{@date.strftime('%d/%m/%Y')}" )
+		transaction = @account.transactions.find_by(transaction_type: "I", date: @date.end_of_day, description: "Saldo do dia #{@date.strftime('%d/%m/%Y')}" )
 		if transaction
 			transaction.update(amount: @account.total_saldo)
 		else
@@ -22,3 +22,4 @@ class RegisterDailyBalanceService
 end
 
 #TODO outro serviço para atualizar os saldos dos dias
+#Serviço que cria automaticamente o saldo do dia

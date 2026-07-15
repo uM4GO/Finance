@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   resources :accounts do
     resources :transactions
     get "register_daily_balance"
+    get "update_daily_balances"
   end
   resources :customers
 
